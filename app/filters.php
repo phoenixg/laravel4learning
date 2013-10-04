@@ -78,3 +78,12 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+Route::filter('old', function()
+{
+    if (Input::get('age') < 200)
+    {
+        return Redirect::to('home');
+    }
+});

@@ -26,7 +26,7 @@
 
 * Maybe it should be configured like above
 
-TO : http://laravel.com/docs/lifecycle 2013104
+TO : http://laravel.com/docs/responses 2013104
 
 
 
