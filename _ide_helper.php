@@ -2971,6 +2971,18 @@ class Eloquent extends Illuminate\Database\Eloquent\Model{
 	 }
 
 	/**
+	 * Add a raw "order by" clause to the query.
+	 *
+	 * @param string  $sql
+	 * @param array  $bindings
+	 * @return \Illuminate\Database\Query\Builder|static
+	 * @static 
+	 */
+	 public static function orderByRaw($sql, $bindings = array()){
+		return Illuminate\Database\Query\Builder::orderByRaw($sql, $bindings);
+	 }
+
+	/**
 	 * Set the "offset" value of the query.
 	 *
 	 * @param int  $value
@@ -3545,6 +3557,18 @@ class File extends Illuminate\Support\Facades\File{
 	 }
 
 	/**
+	 * Prepend to a file.
+	 *
+	 * @param string  $path
+	 * @param string  $data
+	 * @return int
+	 * @static 
+	 */
+	 public static function prepend($path, $data){
+		return Illuminate\Filesystem\Filesystem::prepend($path, $data);
+	 }
+
+	/**
 	 * Append to a file.
 	 *
 	 * @param string  $path
@@ -3746,22 +3770,22 @@ class File extends Illuminate\Support\Facades\File{
 	 *
 	 * @param string  $directory
 	 * @param bool    $preserve
-	 * @return void
+	 * @return bool
 	 * @static 
 	 */
 	 public static function deleteDirectory($directory, $preserve = false){
-		 Illuminate\Filesystem\Filesystem::deleteDirectory($directory, $preserve);
+		return Illuminate\Filesystem\Filesystem::deleteDirectory($directory, $preserve);
 	 }
 
 	/**
 	 * Empty the specified directory of all files and folders.
 	 *
 	 * @param string  $directory
-	 * @return void
+	 * @return bool
 	 * @static 
 	 */
 	 public static function cleanDirectory($directory){
-		 Illuminate\Filesystem\Filesystem::cleanDirectory($directory);
+		return Illuminate\Filesystem\Filesystem::cleanDirectory($directory);
 	 }
 
 }
@@ -3899,6 +3923,19 @@ class Form extends Illuminate\Support\Facades\Form{
 	 */
 	 public static function email($name, $value = null, $options = array()){
 		return Illuminate\Html\FormBuilder::email($name, $value, $options);
+	 }
+
+	/**
+	 * Create a url input field.
+	 *
+	 * @param string  $name
+	 * @param string  $value
+	 * @param array   $options
+	 * @return string
+	 * @static 
+	 */
+	 public static function url($name, $value = null, $options = array()){
+		return Illuminate\Html\FormBuilder::url($name, $value, $options);
 	 }
 
 	/**
@@ -4617,7 +4654,7 @@ class Input extends Illuminate\Support\Facades\Input{
 	 *
 	 * @param string  $key
 	 * @param mixed   $default
-	 * @return \Symfony\Component\HttpFoundation\File\UploadedFile
+	 * @return \Symfony\Component\HttpFoundation\File\UploadedFile|array
 	 * @static 
 	 */
 	 public static function file($key = null, $default = null){
@@ -6722,6 +6759,19 @@ class Redirect extends Illuminate\Support\Facades\Redirect{
 	 }
 
 	/**
+	 * Create a new redirect response to an external URL (no validation).
+	 *
+	 * @param string  $path
+	 * @param int     $status
+	 * @param array   $headers
+	 * @return \Illuminate\Http\RedirectResponse
+	 * @static 
+	 */
+	 public static function away($path, $status = 302, $headers = array()){
+		return Illuminate\Routing\Redirector::away($path, $status, $headers);
+	 }
+
+	/**
 	 * Create a new redirect response to the given HTTPS path.
 	 *
 	 * @param string  $path
@@ -7022,7 +7072,7 @@ class Request extends Illuminate\Support\Facades\Request{
 	 *
 	 * @param string  $key
 	 * @param mixed   $default
-	 * @return \Symfony\Component\HttpFoundation\File\UploadedFile
+	 * @return \Symfony\Component\HttpFoundation\File\UploadedFile|array
 	 * @static 
 	 */
 	 public static function file($key = null, $default = null){
@@ -9352,6 +9402,18 @@ class View extends Illuminate\Support\Facades\View{
 	 */
 	 public static function setContainer($container){
 		 Illuminate\View\Environment::setContainer($container);
+	 }
+
+	/**
+	 * Get an item from the shared data.
+	 *
+	 * @param string  $key
+	 * @param mixed   $default
+	 * @return mixed
+	 * @static 
+	 */
+	 public static function shared($key, $default = null){
+		return Illuminate\View\Environment::shared($key, $default);
 	 }
 
 	/**

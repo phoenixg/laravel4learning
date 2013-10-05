@@ -25,6 +25,11 @@
     raspberrypi
 
 * Maybe it should be configured like above
+* composer update
+
+# composer tools installed
+- laravel IDE helper( click to definitaion )
+- psysh ( PHP debugger )
 
 TO : http://laravel.com/docs/responses 2013104
 
